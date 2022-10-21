@@ -1,0 +1,18 @@
+.allContent{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boxInput{
+  outline: 1px solid black;
+  padding: 10px 5px;
+}
+
+.titleName{
+  margin: 0 0 5px 0;
+}
+
+.input{
+  margin-bottom: 25px;
+}

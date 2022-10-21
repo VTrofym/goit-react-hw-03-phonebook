@@ -1,5 +1,6 @@
 import { Component } from 'react';
 // import { nanoid } from 'nanoid';
+import css from './App.module.css'
 
 export class App extends Component {
   state = {
@@ -9,11 +10,11 @@ export class App extends Component {
   
   render() {
     return (
-      <div>
+      <div className={css.allContent}>
         <h2>Phonebook</h2>
-        <div>
-          <h4>Name</h4>
-        <input
+        <div className={css.boxInput}>
+          <h4 className={css.titleName}>Name</h4>
+        <input className={css.input}
   type="text"
   name="name"
   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
