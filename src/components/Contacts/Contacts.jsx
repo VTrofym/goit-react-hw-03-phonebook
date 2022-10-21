@@ -3,7 +3,11 @@ export function Contacts({ contacts }) {
     <div>
       <h2>Contacts</h2>
       <ul>
-        {/* {contacts.map(contact)} */}
+        {contacts.map(contact => (
+          <li key={contact.id}>
+            {contact.name}
+          </li>
+        ))}
       </ul>
     </div>
   );
