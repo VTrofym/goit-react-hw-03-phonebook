@@ -1,10 +1,11 @@
 import { ContactList } from 'components/ContactList';
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 
 import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
-// import { nanoid } from 'nanoid';
 import css from './App.module.css';
+
 // import dataContacts from '../../data/contacts.json';
 
 export class App extends Component {
@@ -24,19 +25,33 @@ export class App extends Component {
     this.setState({filter: value});
   }
 
-  addContact = event => {
-    
+  addContact = (name, number) => {
+    this.setState(prevState =>{
+      return {
+        contacts: [...prevState.contacts, {
+          name: name,
+          number: number,
+          id: nanoid(),
+        },],
+      }
+    })
   }
 
   render() {
     return (
-      <form className={css.allContent}>
+      <div className={css.allContent}>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm
+          onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter/>
-        <ContactList filter={this.state.filter} contacts={this.state.contacts} handleChangeInput={this.handleChangeInput} />
-      </form>
+        <ContactList
+          filter={this.state.filter}
+          contacts={this.state.contacts}
+          handleChangeInput={this.handleChangeInput}
+          
+        />
+      </div>
     );
   }
 }

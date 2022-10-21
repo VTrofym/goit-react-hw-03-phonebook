@@ -9,6 +9,7 @@ export function ContactList({ contacts, handleChangeInput, filter }) {
         {contacts.map(contact => (
           <li key={contact.id}>
             {contact.name}: {contact.number}
+            {/* <button id={contact.id} onClick={deleteContact}>Delete</button> */}
           </li>
         ))}
       </ul>
