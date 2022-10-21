@@ -1,5 +1,8 @@
-import { Contacts } from 'components/Contacts';
+import { ContactList } from 'components/ContactList';
 import { Component } from 'react';
+
+import { ContactForm } from 'components/ContactForm';
+import { Filter } from 'components/Filter';
 // import { nanoid } from 'nanoid';
 import css from './App.module.css';
 // import dataContacts from '../../data/contacts.json';
@@ -13,8 +16,6 @@ export class App extends Component {
       { id: 4, name: 'Jack Daniels', number: '(050)-488-48-38' },
     ],
     filter: '', 
-    name: '',
-    number: '',
   };
 
   handleChangeInput = event => {
@@ -23,43 +24,18 @@ export class App extends Component {
     this.setState({filter: value});
   }
 
+  addContact = event => {
+    
+  }
+
   render() {
-    // const { name } = this.state;
     return (
       <form className={css.allContent}>
         <h1>Phonebook</h1>
-        <div className={css.boxInput}>
-          <label className={css.titleName}>
-            Name
-            <br />
-            <input
-              // value={name.value}
-              // onChange={this.handleChange}
-              className={css.input}
-              type="text"
-              name="name"
-              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              required
-            />
-          </label>
-          <br />
-          <label>
-            Numbers
-            <br />
-            <input
-              type="tel"
-              name="number"
-              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
-            />
-          </label>
-          <div>
-            <button type="button" className={css.addContact}>Add contact</button>
-          </div>
-        </div>
-        <Contacts filter={this.state.filter} contacts={this.state.contacts} handleChangeInput={this.handleChangeInput} />
+        <ContactForm />
+        <h2>Contacts</h2>
+        <Filter/>
+        <ContactList filter={this.state.filter} contacts={this.state.contacts} handleChangeInput={this.handleChangeInput} />
       </form>
     );
   }
