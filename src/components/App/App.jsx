@@ -6,8 +6,6 @@ import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
 import css from './App.module.css';
 
-// import dataContacts from '../../data/contacts.json';
-
 export class App extends Component {
   state = {
     contacts: [
@@ -49,7 +47,6 @@ export class App extends Component {
           filter={this.state.filter}
           contacts={this.state.contacts}
           handleChangeInput={this.handleChangeInput}
-          
         />
       </div>
     );
