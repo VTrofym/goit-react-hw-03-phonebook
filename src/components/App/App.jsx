@@ -7,24 +7,27 @@ import css from './App.module.css';
 export class App extends Component {
   state = {
     contacts: [
-      { id: 1, name: 'John Bold', number: 123234343 },
-      { id: 2, name: 'Jane Gold', number: 123245643 },
-      { id: 3, name: 'Jim Fold', number: 123456439 },
+      { id: 1, name: 'John Bold', number: '(067)-323-43-43' },
+      { id: 2, name: 'Jane Gold', number: '(066)-123-24-43' },
+      { id: 3, name: 'Jim Fold', number: '(097)-456-40-39' },
+      { id: 4, name: 'Jack Daniels', number: '(050)-488-48-38' },
     ],
+    filter: '', 
     name: '',
     number: '',
   };
 
-  // handleChange = event => {
-  //   const { value } = event.target;
-  //   this.setState({ [value]: value });
-  // }
+  handleChangeInput = event => {
+    const { value } = event.target;
+    console.log(value)
+    this.setState({filter: value});
+  }
 
   render() {
     // const { name } = this.state;
     return (
       <form className={css.allContent}>
-        <h2>Phonebook</h2>
+        <h1>Phonebook</h1>
         <div className={css.boxInput}>
           <label className={css.titleName}>
             Name
@@ -53,10 +56,10 @@ export class App extends Component {
             />
           </label>
           <div>
-            <button type="button">Add contact</button>
+            <button type="button" className={css.addContact}>Add contact</button>
           </div>
         </div>
-        <Contacts contacts={this.state.contacts} />
+        <Contacts filter={this.state.filter} contacts={this.state.contacts} handleChangeInput={this.handleChangeInput} />
       </form>
     );
   }
