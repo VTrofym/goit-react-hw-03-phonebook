@@ -1,36 +1,50 @@
+import { Contacts } from 'components/Contacts';
 import { Component } from 'react';
 // import { nanoid } from 'nanoid';
-import css from './App.module.css'
+import css from './App.module.css';
+// import dataContacts from '../../data/contacts.json';
 
 export class App extends Component {
   state = {
-  contacts: [],
-  name: ''
-  }
-  
+    contacts: [
+      { id: 1, name: 'John Bold', number: 123234343 },
+      { id: 2, name: 'Jane Gold', number: 123245643 },
+      { id: 3, name: 'Jim Fold', number: 123456439 },
+    ],
+    name: '',
+  };
+
+  // handleChange = event => {
+  //   const { value } = event.target;
+  //   this.setState({ [value]: value });
+  // }
+
   render() {
+    // const { name } = this.state;
     return (
-      <div className={css.allContent}>
+      <form className={css.allContent}>
         <h2>Phonebook</h2>
         <div className={css.boxInput}>
-          <h4 className={css.titleName}>Name</h4>
-        <input className={css.input}
-  type="text"
-  name="name"
-  pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-  title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-  required
-        />
-        <div>
-          <button type='button'>Add contact</button>
+          <label className={css.titleName}>
+            Name
+            <br />
+            <input
+              // value={name.value}
+              // onChange={this.handleChange}
+              className={css.input}
+              type="text"
+              name="name"
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </label>
+          <div>
+            <button type="button">Add contact</button>
           </div>
         </div>
-          <h2>Contacts</h2>
-          <ul>
-            <li>Rosie Simpson</li>
-          </ul>
-    </div>
-  );
+        <Contacts contacts={this.state.contacts} />
+      </form>
+    );
   }
-  
-};
+}
