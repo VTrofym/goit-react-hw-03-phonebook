@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
 export class ContactForm extends Component {
@@ -16,14 +17,6 @@ export class ContactForm extends Component {
     event.preventDefault();
     this.props.onSubmit(this.state.name, this.state.number)
     this.setState({name: '', number:''})
-  }
-
-  deleteContact = event => { 
-    this.setState(prevState => {
-      return {
-        name: prevState.name.filter(
-        name => name.id != event.target.id)}
-    })
   }
 
   render() {
@@ -66,4 +59,8 @@ export class ContactForm extends Component {
       </form>
     );
   }
-}
+};
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

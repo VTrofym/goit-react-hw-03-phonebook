@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import css from './ContactList.module.css';
 
-export function ContactList({ contacts, handleChangeInput, filter }) {
+export function ContactList({ contacts, handleChangeInput, filter, onDeleteContact }) {
   return (
     <div>
       <label>
@@ -12,11 +13,23 @@ export function ContactList({ contacts, handleChangeInput, filter }) {
         {contacts.map(contact => (
           <li key={contact.id} className={css.item}>
             {contact.name}: {contact.number}
-            <button className={css.button} id={contact.id} >Delete</button>
+            <button className={css.button} id={contact.id} onClick={() => onDeleteContact(contact.id)} >Delete</button>
           </li>
         ))}
       </ul>
     </div>
   );
 }
-// onClick={deleteContact}
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+  })
+  ),
+  handleChangeInput: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
+};

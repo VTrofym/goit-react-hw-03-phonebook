@@ -35,6 +35,14 @@ export class App extends Component {
     })
   }
 
+  deleteContact = event => { 
+    this.setState(prevState => {
+      return {
+        name: prevState.name.filter(
+        name => name.id != event.target.id)}
+    })
+  }
+
   render() {
     return (
       <div className={css.allContent}>
@@ -47,6 +55,7 @@ export class App extends Component {
           filter={this.state.filter}
           contacts={this.state.contacts}
           handleChangeInput={this.handleChangeInput}
+          onDeleteContact={this.deleteContact}
         />
       </div>
     );
