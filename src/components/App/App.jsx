@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from 'components/ContactForm';
 import { Filter } from 'components/Filter';
 import css from './App.module.css';
+const ID_LOCAL_KEY = "active-id";
 
 export class App extends Component {
   state = {
@@ -16,6 +17,21 @@ export class App extends Component {
     ],
     filter: '',
   };
+
+  componentDidMount() {
+    const savedContacts = JSON.parse(localStorage.getItem(ID_LOCAL_KEY));
+    console.log('savedContacts', savedContacts)
+    if (savedContacts) {
+      this.setState({contacts: savedContacts})
+    }
+  }
+
+  componentDidUpdate(_, oldState) {
+    const { contacts } = this.state;
+    if (this.state.contacts.length !== oldState.contacts.length) {
+      localStorage.setItem(ID_LOCAL_KEY, JSON.stringify(contacts));
+    }
+  }
 
   handleChangeInput = event => {
     const { value } = event.target;
@@ -122,3 +138,15 @@ export class App extends Component {
 //     localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
 //   }
 // }
+
+    // const ourContacts = localStorage.getItem('contacts');
+    // console.log('ourContacts', ourContacts)
+    // const parseContacts = JSON.parse(ourContacts);
+    // console.log('parseContacts', parseContacts)
+    // if (parseContacts) (
+    //   this.setState({contacts: parseContacts})
+    // )
+
+     // if (this.state.contacts !== oldState.contacts) {
+    //   localStorage.setItem('contacts', this.state.contacts);
+    // }
