@@ -15,9 +15,9 @@ export class ContactForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onSubmit(this.state.name, this.state.number)
-    this.setState({name: '', number:''})
-  }
+    this.props.onSubmit(this.state.name, this.state.number);
+    this.setState({ name: '', number: '' });
+  };
 
   render() {
     return (
@@ -59,7 +59,7 @@ export class ContactForm extends Component {
       </form>
     );
   }
-};
+}
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
