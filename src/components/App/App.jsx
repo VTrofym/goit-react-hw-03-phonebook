@@ -20,7 +20,6 @@ export class App extends Component {
 
   componentDidMount() {
     const savedContacts = JSON.parse(localStorage.getItem(ID_LOCAL_KEY));
-    console.log('savedContacts', savedContacts)
     if (savedContacts) {
       this.setState({contacts: savedContacts})
     }
@@ -71,7 +70,6 @@ export class App extends Component {
   };
 
   filterContact = event => {
-    console.log(event.currentTarget.value);
     this.setState({ filter: event.currentTarget.value });
   };
 
@@ -123,30 +121,3 @@ export class App extends Component {
 //     }
 //   }
 
-// запись в локал сторидж
-// componentDidMount() {
-//   const contacts = localStorage.getItem('contacts');
-//   const parsedContacts = JSON.parse(contacts)
-//   if (parsedContacts) {
-//     this.setState({ contacts: parsedContacts });
-//   }
-//   this.setState({contacts: parsedContacts})
-// }
-
-// componentDidUpdate(prevProps, prevState) {
-//   if (this.state.contacts !== prevState.contacts) {
-//     localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-//   }
-// }
-
-    // const ourContacts = localStorage.getItem('contacts');
-    // console.log('ourContacts', ourContacts)
-    // const parseContacts = JSON.parse(ourContacts);
-    // console.log('parseContacts', parseContacts)
-    // if (parseContacts) (
-    //   this.setState({contacts: parseContacts})
-    // )
-
-     // if (this.state.contacts !== oldState.contacts) {
-    //   localStorage.setItem('contacts', this.state.contacts);
-    // }
